@@ -1,0 +1,139 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+figure.snip1033 {
+  font-family: 'Raleway', Arial, sans-serif;
+  color: #fff;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 220px;
+  max-width: 310px;
+  max-height: 220px;
+  width: 100%;
+  background: #000000;
+}
+figure.snip1033 img {
+  opacity: 1;
+  width: 100%;
+  position: relative;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+figure.snip1033 .center {
+  border-radius: 5px;
+  display: block;
+  content: '';
+  position: absolute;
+  background-color: #000;
+  top: 50%;
+  left: 50%;
+  height: 70px;
+  width: 70px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%) rotate(0deg);
+  transform: translate(-50%, -50%) rotate(0deg);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+figure.snip1033 .center i {
+  font-size: 38px;
+  padding: 6px;
+  color: #ffffff;
+  line-height: 70px;
+  opacity: 0.3;
+}
+figure.snip1033 figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+figure.snip1033 figcaption > div {
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  width: 50%;
+  position: relative;
+}
+figure.snip1033 figcaption a {
+  opacity: 0.7;
+}
+figure.snip1033 figcaption a:hover {
+  opacity: 1;
+}
+figure.snip1033 figcaption h3 {
+  background-color: #222;
+  word-spacing: -0.1em;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1em;
+  opacity: 0;
+  position: absolute;
+  -webkit-transition: opacity 0.45s, -webkit-transform 0.45s;
+  transition: opacity 0.45s,-webkit-transform 0.45s,-moz-transform 0.45s,-o-transform 0.45s,transform 0.45s;
+}
+figure.snip1033 figcaption .left h3 {
+  border-radius: 5px 0 0 5px;
+  top: 50%;
+  padding: 4px 35px 4px 10px;
+  right: 0;
+  -webkit-transform: translate(100%, 0px);
+  transform: translate(100%, 0px);
+}
+figure.snip1033 figcaption .right h3 {
+  border-radius: 0 5px 5px 0;
+  bottom: 50%;
+  padding: 4px 10px 4px 35px;
+  padding-left: 30px;
+  -webkit-transform: translate(-100%, 0px);
+  transform: translate(-100%, 0px);
+}
+figure.snip1033 a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+}
+figure.snip1033 .red {
+  background-color: #8c212a;
+}
+figure.snip1033 .yellow {
+  background-color: #945600;
+}
+figure.snip1033 .white {
+  background-color: #ffffff;
+  color: #444444;
+}
+figure.snip1033:hover img,
+figure.snip1033.hover img {
+  opacity: 0.5;
+}
+figure.snip1033:hover figcaption .left h3,
+figure.snip1033.hover figcaption .left h3 {
+  opacity: 1;
+  -webkit-transform: translate(0%, 0px);
+  transform: translate(0%, 0px);
+}
+figure.snip1033:hover figcaption .right h3,
+figure.snip1033.hover figcaption .right h3 {
+  opacity: 1;
+  -webkit-transform: translate(0%, 0px);
+  transform: translate(0%, 0px);
+}
+figure.snip1033:hover .center,
+figure.snip1033.hover .center {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+figure.snip1033:hover .center i,
+figure.snip1033.hover .center i {
+  -webkit-transform: translate(0%, -10px);
+  transform: translate(0%, -10px);
+}

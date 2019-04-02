@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 साइन अप करें
+
+  form.form-horizontal(id='signup-form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='email') ईमेल
+
+      .col-sm-7
+        input.form-control(type='email', name='email', id='email', placeholder='ईमेल', autofocus)
+    .form-group
+      label.col-sm-3.control-label(for='password') पासवर्ड
+
+      .col-sm-7
+        input.form-control(type='password', name='password', id='password', placeholder='पासवर्ड')
+    .form-group
+      label.col-sm-3.control-label(for='confirmPassword') पासवर्ड दोहराएँ
+
+      .col-sm-7
+        input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='पासवर्ड दोहराएँ')
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-user-plus
+          | साइन अप

@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 प्रोफ़ाइल जानकारी
+
+
+  form.form-horizontal(action='/account/profile', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='email') ईमेल
+      .col-sm-7
+        input.form-control(type='email', name='email', id='email', value='#{user.email}', disabled)
+        
+  .page-header
+    h3 खाता डिलीट
+
+
+  form.form-horizontal(action='/account/delete', method='POST')
+    .form-group
+      p.col-sm-offset-3.col-sm-4 यदि आप अपना खाता हटाते हैं, तो यह अच्छे के लिए है.
+      input(type='hidden', name='_csrf', value=_csrf)
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn-danger(type='submit')
+          i.fa.fa-trash
+          | मेरा खाता डिलीट करो

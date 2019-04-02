@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  if !user
+   
+    hr
+    .row
+      .col-sm-6
+       
+  else
+    h1 स्वागत हे #{user.email}!
+    p. यहाँ सभी अनन्य सदस्य विशेषताएं हैं
+
+    

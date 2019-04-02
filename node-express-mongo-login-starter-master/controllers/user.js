@@ -1,0 +1,124 @@
+'use strict';
+var passport = require('passport');
+var User = require('../models/User');
+
+exports.loginPage = function (request, response) {
+    // Redirect to index page if already logged in
+    if (request.user) {
+        return response.redirect('/');
+    }
+    response.render('account/login', {
+        title : 'Login'
+    });
+};
+
+exports.login = function (request, response, callback) {
+    // input validation
+    request.assert('email', 'ईमेल वैध नहीं है').isEmail();
+    request.assert('password', 'पासवर्ड रिक्त नहीं हो सकता').notEmpty();
+
+    var errors = request.validationErrors();
+
+    if (errors) {
+        request.flash('errors', errors);
+        return response.redirect('/login');
+    }
+    
+    // This refers back to passport.js localStrategy named 'local'
+    passport.authenticate('local', function (errors, user, validationMessages) {
+        if (errors) {
+            return callback(errors);
+        }
+        if (!user) {
+            request.flash('errors', {
+                msg : validationMessages.message
+            });
+            return response.redirect('/login');
+        }
+        request.logIn(user, function (err) {
+            if (err) {
+                return callback(err);
+            }
+            response.redirect(request.session.returnTo || '/');
+        });
+    })(request, response, callback);
+};
+
+exports.logout = function (request, response) {
+    request.logout();
+    response.redirect('/');
+};
+
+exports.signupPage = function (request, response) {
+    if (request.user) {
+        return response.redirect('/');
+    }
+    response.render('account/signup', {
+        title : 'Create Account'
+    });
+};
+
+exports.signup = function (request, response, callback) {
+    // input validation
+    request.assert('email', 'ईमेल वैध नहीं है').isEmail();
+    request.assert('password', 'पासवर्ड रिक्त नहीं हो सकता').len(8);
+    request.assert('confirmPassword', 'पासवर्ड मेल नहीं खाते').equals(request.body.password);
+
+    var errors = request.validationErrors();
+
+    if (errors) {
+        request.flash('errors', errors);
+        return response.redirect('/signup');
+    }
+
+    User.findOne({
+        email : request.body.email
+    }, function (err, existingUser) {
+        if (existingUser) {
+            request.flash('errors', {
+                msg : 'उस ईमेल पते के साथ खाता पहले से मौजूद है.'
+            });
+            return response.redirect('/signup');
+        }
+        
+        // Create and save the user if it doesn't exist
+        var user = new User({
+            email : request.body.email,
+            password : request.body.password
+        });
+        
+        user.save(function (err) {
+            if (err) {
+                return callback(err);
+            }
+            // Log in on successful creation
+            request.logIn(user, function (err) {
+                if (err) {
+                    return callback(err);
+                }
+                response.redirect('/');
+            });
+        });
+    });
+};
+
+exports.accountManagementPage = function (request, response) {
+    response.render('account/profile', {
+        title : 'Account Management'
+    });
+};
+
+exports.deleteAccount = function (request, response, callback) {
+    User.remove({
+        _id : request.user.id
+    }, function (err) {
+        if (err) {
+            return callback(err);
+        }
+        request.logout();
+        request.flash('info', {
+            msg : 'आपका खाता हटा दिया गया है.'
+        });
+        response.redirect('/');
+    });
+};

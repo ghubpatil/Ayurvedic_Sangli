@@ -1,0 +1,40 @@
+.snip1325 {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 100px;
+
+  max-width: 1024px;
+  height: 220px;
+  width: 1000px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+.snip1325 img {
+  height: 90%;
+  position: relative;
+  right: 0;
+  border: none;
+
+  /*
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out; */
+
+  -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+  animation: mymove 5s infinite;
+}
+@-webkit-keyframes mymove {
+  50% {right: 50px;}
+}
+
+/*
+.snip1325:hover img,
+.snip1325.hover img {
+  -webkit-transform: translateX(200px);
+  transform: translateX(200px);
+}
+/* Demo purposes only */
+body {
+ /* background-color: #212121; */
+}
